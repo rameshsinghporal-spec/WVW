@@ -109,6 +109,25 @@
             height: auto;
             border-radius: 10px;
         }
+
+        /* NEW NOTICE BOX */
+        .gpay-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 18px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .gpay-warning strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
         .form-label {
             font-weight: 700;
             color: #374151;
@@ -150,6 +169,7 @@
         <div class="order-header">
             <h2>Order Form</h2>
         </div>
+
         <div class="step-indicator">
             <div class="step-item">
                 <span class="step-num">1</span> Details
@@ -158,47 +178,72 @@
                 <span class="step-num">2</span> Payment
             </div>
         </div>
+
         <div class="card-payment">
             <div class="payment-header">
                 <h4 class="fw-bold mb-1">Payment</h4>
                 <p class="text-muted mb-0">Scan the QR to pay. After payment Booking will be confirmed.</p>
             </div>
+
             <div class="payment-body">
+
                 <div class="summary-box">
                     <div class="summary-row">
                         <span>Vehicle Type:</span>
                         <span id="vehicleTypeText">Two Wheeler</span>
                     </div>
+
                     <div class="summary-row">
                         <span>Number of Plates:</span>
                         <span>Pair</span>
                     </div>
+
                     <div class="summary-row text-primary">
                         <span>Total Payment Payable :</span>
                         <span id="priceText">₹ 1099.00</span>
                     </div>
                 </div>
+
                 <div class="qr-section">
+
+                    <!-- GOOGLE PAY WARNING -->
+                    <div class="gpay-warning">
+                        <strong>⚠ Google Pay is currently not working</strong>
+                        Please use PhonePe, Paytm, BHIM or any other UPI app for payment 🙏
+                    </div>
+
                     <p class="fw-bold mb-2">Payment QR Code</p>
+
                     <div class="qr-frame">
                         <img id="qrImg" src="images/1099.png" alt="Payment QR">
                     </div>
+
                     <a href="#" class="btn-download" onclick="downloadQR()">Save QR Code & Download</a>
                 </div>
+
                 <form action="thank-you.html">
+
                     <div class="mb-3">
                         <label class="form-label">Transaction ID*</label>
                         <input type="text" class="form-control" placeholder="Enter your transaction ID" required>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Upload Payment Proof</label>
                         <input type="file" class="form-control" accept="image/*">
-                        <small class="text-muted mt-1 d-block">Upload screenshot or receipt of your payment.</small>
+                        <small class="text-muted mt-1 d-block">
+                            Upload screenshot or receipt of your payment.
+                        </small>
                     </div>
-                    <button type="submit" class="btn-submit shadow">Submit Order</button>
+
+                    <button type="submit" class="btn-submit shadow">
+                        Submit Order
+                    </button>
+
                     <div class="text-center mt-3">
                         <a href="enquiry.html" class="btn-back">Back</a>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -237,9 +282,10 @@
         qrImg.onload = function () {
             console.log('✅ Image loaded successfully:', settings.img);
         };
+
         qrImg.onerror = function () {
             console.error('❌ Image FAILED to load:', settings.img);
-            alert('QR image not found: ' + settings.img + '\n\nMake sure the file exists in images folder!');
+            alert('QR image not found: ' + settings.img + '\\n\\nMake sure the file exists in images folder!');
         };
 
         function downloadQR() {
